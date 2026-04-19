@@ -1,0 +1,65 @@
+{
+    "name": "bisma",
+    "history": [
+        {
+            "user": "hello",
+            "bot": "Hi! How can I help you today?"
+        },
+        {
+            "user": "I am good",
+            "bot": "I am still learning. Can you rephrase?"
+        },
+        {
+            "user": "Yes",
+            "bot": "I am still learning. Can you rephrase?"
+        },
+        {
+            "user": "My name is Bisma",
+            "bot": "I am your AI chatbot with memory."
+        },
+        {
+            "user": "What is my name?",
+            "bot": "I am your AI chatbot with memory."
+        },
+        {
+            "user": "Hello",
+            "bot": "Hi! I can now remember our conversation \ud83d\ude0a"
+        },
+        {
+            "user": "How are you?",
+            "bot": "I\u2019m learning from our conversation. Tell me more."
+        },
+        {
+            "user": "My name is Bisma",
+            "bot": "Nice to meet you bisma! I\u2019ll try to remember that."
+        },
+        {
+            "user": "What is my name?",
+            "bot": "I\u2019m learning from our conversation. Tell me more."
+        },
+        {
+            "user": "Bye",
+            "bot": "Goodbye! I\u2019ll remember our chat."
+        },
+        {
+            "user": "What is my name?",
+            "bot": "I\u2019m learning from our conversation. Tell me more."
+        },
+        {
+            "user": "Name?",
+            "bot": "I\u2019m learning from our conversation. Tell me more."
+        },
+        {
+            "user": "Hello",
+            "bot": "Hi! I can now remember your name \ud83d\ude0a"
+        },
+        {
+            "user": "My name is Bisma",
+            "bot": "Nice to meet you bisma! I will remember your name."
+        },
+        {
+            "user": "What is my name?",
+            "bot": "Your name is bisma."
+        }
+    ]
+}
