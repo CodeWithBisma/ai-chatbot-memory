@@ -60,6 +60,50 @@
         {
             "user": "What is my name?",
             "bot": "Your name is bisma."
+        },
+        {
+            "user": "Hello",
+            "bot": "Hi! I can now understand context from our past chats \ud83d\ude0a"
+        },
+        {
+            "user": "WHat is my name?",
+            "bot": "Your name is bisma."
+        },
+        {
+            "user": "WHere do i live?",
+            "bot": "Tell me more. I'm learning from what you say."
+        },
+        {
+            "user": "I am sad",
+            "bot": "Tell me more. I'm learning from what you say."
+        },
+        {
+            "user": "hello",
+            "bot": "I noticed you seemed sad earlier. Are you feeling okay?"
+        },
+        {
+            "user": "yes",
+            "bot": "Tell me more. I'm learning from what you say."
+        },
+        {
+            "user": "hello",
+            "bot": "Hi! I can now understand context from our past chats \ud83d\ude0a"
+        },
+        {
+            "user": "Make me happy",
+            "bot": "Tell me more. I'm learning from what you say."
+        },
+        {
+            "user": "hello",
+            "bot": "Hi! I'm your AI chatbot \ud83d\ude0a"
+        },
+        {
+            "user": "WHat is my name",
+            "bot": "Your name is bisma."
+        },
+        {
+            "user": "What are you doin?",
+            "bot": "Tell me more."
         }
     ]
 }
