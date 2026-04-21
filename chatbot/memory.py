@@ -11,7 +11,8 @@ import os
 from typing import Optional
 
 # ── Configuration ──────────────────────────────────────────────────────────────
-MEMORY_FILE = os.path.join(os.path.dirname(__file__), "..", "data", "memory.json")
+MEMORY_FILE = MEMORY_FILE = "/tmp/memory.json"
+
 
 _DEFAULT_STORE = {
     "name": None,
@@ -22,14 +23,11 @@ _DEFAULT_STORE = {
 # ── Core I/O ───────────────────────────────────────────────────────────────────
 
 def load_memory() -> dict:
-    """Load the full memory store from disk. Returns defaults if file is missing or corrupt."""
     if not os.path.exists(MEMORY_FILE):
-        _ensure_data_dir()
         return dict(_DEFAULT_STORE)
     try:
         with open(MEMORY_FILE, "r", encoding="utf-8") as f:
             data = json.load(f)
-            # Ensure required keys exist even in legacy files
             data.setdefault("name", None)
             data.setdefault("history", [])
             return data
