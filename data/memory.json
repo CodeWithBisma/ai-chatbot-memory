@@ -1,109 +1,157 @@
 {
-    "name": "bisma",
-    "history": [
-        {
-            "user": "hello",
-            "bot": "Hi! How can I help you today?"
-        },
-        {
-            "user": "I am good",
-            "bot": "I am still learning. Can you rephrase?"
-        },
-        {
-            "user": "Yes",
-            "bot": "I am still learning. Can you rephrase?"
-        },
-        {
-            "user": "My name is Bisma",
-            "bot": "I am your AI chatbot with memory."
-        },
-        {
-            "user": "What is my name?",
-            "bot": "I am your AI chatbot with memory."
-        },
-        {
-            "user": "Hello",
-            "bot": "Hi! I can now remember our conversation \ud83d\ude0a"
-        },
-        {
-            "user": "How are you?",
-            "bot": "I\u2019m learning from our conversation. Tell me more."
-        },
-        {
-            "user": "My name is Bisma",
-            "bot": "Nice to meet you bisma! I\u2019ll try to remember that."
-        },
-        {
-            "user": "What is my name?",
-            "bot": "I\u2019m learning from our conversation. Tell me more."
-        },
-        {
-            "user": "Bye",
-            "bot": "Goodbye! I\u2019ll remember our chat."
-        },
-        {
-            "user": "What is my name?",
-            "bot": "I\u2019m learning from our conversation. Tell me more."
-        },
-        {
-            "user": "Name?",
-            "bot": "I\u2019m learning from our conversation. Tell me more."
-        },
-        {
-            "user": "Hello",
-            "bot": "Hi! I can now remember your name \ud83d\ude0a"
-        },
-        {
-            "user": "My name is Bisma",
-            "bot": "Nice to meet you bisma! I will remember your name."
-        },
-        {
-            "user": "What is my name?",
-            "bot": "Your name is bisma."
-        },
-        {
-            "user": "Hello",
-            "bot": "Hi! I can now understand context from our past chats \ud83d\ude0a"
-        },
-        {
-            "user": "WHat is my name?",
-            "bot": "Your name is bisma."
-        },
-        {
-            "user": "WHere do i live?",
-            "bot": "Tell me more. I'm learning from what you say."
-        },
-        {
-            "user": "I am sad",
-            "bot": "Tell me more. I'm learning from what you say."
-        },
-        {
-            "user": "hello",
-            "bot": "I noticed you seemed sad earlier. Are you feeling okay?"
-        },
-        {
-            "user": "yes",
-            "bot": "Tell me more. I'm learning from what you say."
-        },
-        {
-            "user": "hello",
-            "bot": "Hi! I can now understand context from our past chats \ud83d\ude0a"
-        },
-        {
-            "user": "Make me happy",
-            "bot": "Tell me more. I'm learning from what you say."
-        },
-        {
-            "user": "hello",
-            "bot": "Hi! I'm your AI chatbot \ud83d\ude0a"
-        },
-        {
-            "user": "WHat is my name",
-            "bot": "Your name is bisma."
-        },
-        {
-            "user": "What are you doin?",
-            "bot": "Tell me more."
-        }
-    ]
+  "name": "Alex",
+  "history": [
+    {
+      "user": "hello",
+      "bot": "Hi! How can I help you today?"
+    },
+    {
+      "user": "I am good",
+      "bot": "I am still learning. Can you rephrase?"
+    },
+    {
+      "user": "Yes",
+      "bot": "I am still learning. Can you rephrase?"
+    },
+    {
+      "user": "My name is Bisma",
+      "bot": "I am your AI chatbot with memory."
+    },
+    {
+      "user": "What is my name?",
+      "bot": "I am your AI chatbot with memory."
+    },
+    {
+      "user": "Hello",
+      "bot": "Hi! I can now remember our conversation 😊"
+    },
+    {
+      "user": "How are you?",
+      "bot": "I’m learning from our conversation. Tell me more."
+    },
+    {
+      "user": "My name is Bisma",
+      "bot": "Nice to meet you bisma! I’ll try to remember that."
+    },
+    {
+      "user": "What is my name?",
+      "bot": "I’m learning from our conversation. Tell me more."
+    },
+    {
+      "user": "Bye",
+      "bot": "Goodbye! I’ll remember our chat."
+    },
+    {
+      "user": "What is my name?",
+      "bot": "I’m learning from our conversation. Tell me more."
+    },
+    {
+      "user": "Name?",
+      "bot": "I’m learning from our conversation. Tell me more."
+    },
+    {
+      "user": "Hello",
+      "bot": "Hi! I can now remember your name 😊"
+    },
+    {
+      "user": "My name is Bisma",
+      "bot": "Nice to meet you bisma! I will remember your name."
+    },
+    {
+      "user": "What is my name?",
+      "bot": "Your name is bisma."
+    },
+    {
+      "user": "Hello",
+      "bot": "Hi! I can now understand context from our past chats 😊"
+    },
+    {
+      "user": "WHat is my name?",
+      "bot": "Your name is bisma."
+    },
+    {
+      "user": "WHere do i live?",
+      "bot": "Tell me more. I'm learning from what you say."
+    },
+    {
+      "user": "I am sad",
+      "bot": "Tell me more. I'm learning from what you say."
+    },
+    {
+      "user": "hello",
+      "bot": "I noticed you seemed sad earlier. Are you feeling okay?"
+    },
+    {
+      "user": "yes",
+      "bot": "Tell me more. I'm learning from what you say."
+    },
+    {
+      "user": "hello",
+      "bot": "Hi! I can now understand context from our past chats 😊"
+    },
+    {
+      "user": "Make me happy",
+      "bot": "Tell me more. I'm learning from what you say."
+    },
+    {
+      "user": "hello",
+      "bot": "Hi! I'm your AI chatbot 😊"
+    },
+    {
+      "user": "WHat is my name",
+      "bot": "Your name is bisma."
+    },
+    {
+      "user": "What are you doin?",
+      "bot": "Tell me more."
+    },
+    {
+      "user": "Hello",
+      "bot": "Hi! I'm your AI chatbot 😊"
+    },
+    {
+      "user": "hello",
+      "bot": "Hi! I'm your AI chatbot 😊"
+    },
+    {
+      "user": "I am bisma",
+      "bot": "Tell me more."
+    },
+    {
+      "user": "WHo i am",
+      "bot": "Tell me more."
+    },
+    {
+      "user": "Hello!",
+      "bot": "Hello, bisma! I'm Mnemosyne, your memory-enabled AI assistant. How can I help you today?"
+    },
+    {
+      "user": "My name is Alex",
+      "bot": "Nice to meet you, Alex! I'll remember that for our future conversations."
+    },
+    {
+      "user": "Hello",
+      "bot": "Hello, Alex! I'm Mnemosyne, your memory-enabled AI assistant. How can I help you today?"
+    },
+    {
+      "user": "My name is Bisma",
+      "bot": "Nice to meet you, Bisma! I'll remember that for our future conversations."
+    },
+    {
+      "user": "What is my anme",
+      "bot": "Interesting — tell me more. I'm learning from everything we discuss."
+    },
+    {
+      "user": "What is my name?",
+      "bot": "Your name is Bisma."
+    },
+    {
+      "user": "Show me out history",
+      "bot": "Here's a summary of our recent exchange:\n\n• You: My name is Bisma\n  Me: Nice to meet you, Bisma! I'll remember that for our future conversations.\n• You: What is my anme\n  Me: Interesting — tell me more. I'm learning from everything we discuss.\n• You: What is my name?\n  Me: Your name is Bisma."
+    },
+    {
+      "user": "My name is Alex",
+      "bot": "Nice to meet you, Alex! I'll remember that for our future conversations."
+    }
+  ]
 }

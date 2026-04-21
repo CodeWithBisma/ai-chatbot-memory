@@ -1,40 +1,258 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>AI Chatbot</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mnemosyne · AI Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="chat-container">
-    <h2>AI Chatbot</h2>
+<div class="app">
 
-    <div id="chat-box"></div>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-top">
+            <div class="brand">
+                <div class="brand-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                        <path d="M8 12h8M12 8v8"/>
+                    </svg>
+                </div>
+                <span class="brand-name">Mnemosyne</span>
+            </div>
+            <button class="new-chat-btn" onclick="clearChat()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M5 12h14"/>
+                </svg>
+                New chat
+            </button>
+        </div>
 
-    <input type="text" id="user-input" placeholder="Type a message...">
-    <button onclick="sendMessage()">Send</button>
+        <div class="sidebar-section">
+            <span class="sidebar-label">Capabilities</span>
+            <ul class="feature-list">
+                <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                    Conversation memory
+                </li>
+                <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    Remembers your name
+                </li>
+                <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    Context-aware replies
+                </li>
+                <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    Emotional intelligence
+                </li>
+            </ul>
+        </div>
+
+        <div class="sidebar-section">
+            <span class="sidebar-label">Try asking</span>
+            <ul class="suggestion-list">
+                <li onclick="fillInput('My name is Alex')">My name is Alex</li>
+                <li onclick="fillInput('What is my name?')">What is my name?</li>
+                <li onclick="fillInput('Show me our history')">Show me our history</li>
+            </ul>
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="status-dot"></div>
+            <span>Memory active · JSON store</span>
+        </div>
+    </aside>
+
+    <!-- Main chat -->
+    <main class="chat-area">
+
+        <header class="chat-header">
+            <div class="header-left">
+                <span class="model-badge">
+                    <span class="pulse"></span>
+                    Live
+                </span>
+                <span class="model-name">Context window: last 3 turns</span>
+            </div>
+            <div class="header-right">
+                <button class="icon-btn" title="Clear history" onclick="clearChat()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                </button>
+            </div>
+        </header>
+
+        <div id="chat-box" class="chat-box">
+            <!-- Welcome state -->
+            <div class="welcome" id="welcome">
+                <div class="welcome-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                        <path d="M8 12h8M12 8v8"/>
+                    </svg>
+                </div>
+                <h1>Hello, I'm Mnemosyne</h1>
+                <p>An AI assistant that remembers your conversations.<br>Start chatting to explore persistent memory in action.</p>
+                <div class="quick-prompts">
+                    <button onclick="fillInput('Hello!')">Say hello</button>
+                    <button onclick="fillInput('My name is Alex')">Introduce yourself</button>
+                    <button onclick="fillInput('Show me our history')">View history</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="input-wrapper">
+            <div class="input-area">
+                <textarea
+                    id="user-input"
+                    placeholder="Message Mnemosyne…"
+                    rows="1"
+                    onkeydown="handleKey(event)"
+                    oninput="autoResize(this)"
+                ></textarea>
+                <button class="send-btn" id="send-btn" onclick="sendMessage()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <line x1="22" y1="2" x2="11" y2="13"/>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                    </svg>
+                </button>
+            </div>
+            <p class="disclaimer">Powered by Flask · Memory stored in JSON </p>
+        </div>
+
+    </main>
 </div>
 
 <script>
+let isFirstMessage = true;
+
+function autoResize(el) {
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 160) + 'px';
+}
+
+function handleKey(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+    }
+}
+
+function fillInput(text) {
+    const input = document.getElementById('user-input');
+    input.value = text;
+    input.focus();
+    autoResize(input);
+}
+
+function clearChat() {
+    const chatBox = document.getElementById('chat-box');
+    chatBox.innerHTML = `
+        <div class="welcome" id="welcome">
+            <div class="welcome-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
+                    <path d="M8 12h8M12 8v8"/>
+                </svg>
+            </div>
+            <h1>Hello, I'm Mnemosyne</h1>
+            <p>An AI assistant that remembers your conversations.<br>Start chatting to explore persistent memory in action.</p>
+            <div class="quick-prompts">
+                <button onclick="fillInput('Hello!')">Say hello</button>
+                <button onclick="fillInput('My name is Alex')">Introduce yourself</button>
+                <button onclick="fillInput('Show me our history')">View history</button>
+            </div>
+        </div>`;
+    isFirstMessage = true;
+}
+
+function appendMessage(content, role) {
+    const welcome = document.getElementById('welcome');
+    if (welcome) welcome.remove();
+
+    const chatBox = document.getElementById('chat-box');
+
+    const wrapper = document.createElement('div');
+    wrapper.className = `message-wrapper ${role}`;
+
+    const avatar = document.createElement('div');
+    avatar.className = 'avatar';
+
+    if (role === 'bot') {
+        avatar.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12h8M12 8v8"/></svg>`;
+    } else {
+        avatar.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`;
+    }
+
+    const bubble = document.createElement('div');
+    bubble.className = 'message';
+    bubble.textContent = content;
+
+    if (role === 'bot') {
+        wrapper.appendChild(avatar);
+        wrapper.appendChild(bubble);
+    } else {
+        wrapper.appendChild(bubble);
+        wrapper.appendChild(avatar);
+    }
+
+    chatBox.appendChild(wrapper);
+    chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: 'smooth' });
+}
+
+function showTyping() {
+    const chatBox = document.getElementById('chat-box');
+    const typing = document.createElement('div');
+    typing.className = 'message-wrapper bot';
+    typing.id = 'typing-indicator';
+    typing.innerHTML = `
+        <div class="avatar">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12h8M12 8v8"/></svg>
+        </div>
+        <div class="message typing">
+            <span></span><span></span><span></span>
+        </div>`;
+    chatBox.appendChild(typing);
+    chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: 'smooth' });
+}
+
+function removeTyping() {
+    const t = document.getElementById('typing-indicator');
+    if (t) t.remove();
+}
+
 async function sendMessage() {
-    let input = document.getElementById("user-input");
-    let message = input.value;
+    const input = document.getElementById('user-input');
+    const sendBtn = document.getElementById('send-btn');
+    const message = input.value.trim();
+    if (!message) return;
 
-    let chatBox = document.getElementById("chat-box");
+    appendMessage(message, 'user');
+    input.value = '';
+    input.style.height = 'auto';
+    sendBtn.disabled = true;
+    showTyping();
 
-    chatBox.innerHTML += "<p><b>You:</b> " + message + "</p>";
-
-    let response = await fetch("/chat", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({message: message})
-    });
-
-    let data = await response.json();
-
-    chatBox.innerHTML += "<p><b>Bot:</b> " + data.response + "</p>";
-
-    input.value = "";
+    try {
+        const res = await fetch('/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message })
+        });
+        const data = await res.json();
+        removeTyping();
+        appendMessage(data.response, 'bot');
+    } catch (err) {
+        removeTyping();
+        appendMessage('Connection error. Please try again.', 'bot');
+    } finally {
+        sendBtn.disabled = false;
+        input.focus();
+    }
 }
 </script>
 
